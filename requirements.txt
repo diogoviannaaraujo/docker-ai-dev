@@ -2,3 +2,10 @@ ultralytics
 insightface
 onnx
 onnxruntime-gpu
+huggingface_hub[cli]
+accelerate
+transformers
+qwen-vl-utils[decord]
+autoawq
+
+torch==2.5.1+cu126
