@@ -4,8 +4,7 @@
 if [ -n "${GH_LOGIN_TOKEN}" ]; then
     echo "GH_LOGIN_TOKEN found, authenticating with GitHub..."
     # set GH_TOKEN environment variable
-    export GH_TOKEN=${GH_LOGIN_TOKEN}
-    gh auth login --with-token
+    echo "${GH_LOGIN_TOKEN}" | gh auth login --with-token
     if [ $? -ne 0 ]; then
         echo "Warning: Failed to authenticate with GitHub. Continuing without authentication."
     else
