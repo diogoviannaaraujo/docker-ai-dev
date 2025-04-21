@@ -25,4 +25,4 @@ else
 fi
 
 # Start JupyterLab
-exec jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+exec jupyter lab --ip=0.0.0.0 --port=8888 --allow-origin="*" --no-browser --allow-root
