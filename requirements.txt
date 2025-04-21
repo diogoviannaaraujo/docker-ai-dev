@@ -1,0 +1,4 @@
+ultralytics
+insightface
+onnx
+onnxruntime-gpu
