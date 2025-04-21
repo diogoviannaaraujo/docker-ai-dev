@@ -22,18 +22,23 @@ RUN pip install jupyterlab
 
 RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
-WORKDIR /workdir
-
-# Set the working directory in the container
-# Copy the requirements file
-COPY requirements.txt /requirements.txt
-
-# Install the dependencies
-RUN pip install --no-cache-dir -r /requirements.txt
+RUN pip install --no-cache-dir \
+    ultralytics \
+    insightface \
+    onnx \
+    onnxruntime-gpu \
+    "huggingface_hub[cli]" \
+    accelerate \
+    transformers \
+    "qwen-vl-utils[decord]" \
+    autoawq \
+    tensorrt
 
 # Copy startup script and make it executable
 COPY startup.sh /startup.sh
 RUN chmod +x /startup.sh
+
+WORKDIR /workdir
 
 # Use startup script as entrypoint
 CMD ["/startup.sh"]
