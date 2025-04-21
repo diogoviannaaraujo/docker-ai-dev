@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # Check if GH_TOKEN is set and authenticate with GitHub if available
-if [ -n "${GH_TOKEN}" ]; then
-    echo "GH_TOKEN found, authenticating with GitHub..."
-    echo "${GH_TOKEN}" | gh auth login --with-token
+if [ -n "${GH_LOGIN_TOKEN}" ]; then
+    echo "GH_LOGIN_TOKEN found, authenticating with GitHub..."
+    # set GH_TOKEN environment variable
+    export GH_TOKEN=${GH_LOGIN_TOKEN}
+    gh auth login --with-token
     if [ $? -ne 0 ]; then
         echo "Warning: Failed to authenticate with GitHub. Continuing without authentication."
     else

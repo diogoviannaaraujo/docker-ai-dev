@@ -7,3 +7,4 @@ accelerate
 transformers
 qwen-vl-utils[decord]
 autoawq
+tensorrt
