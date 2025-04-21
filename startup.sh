@@ -1,18 +1,17 @@
 #!/bin/bash
 
-# Check if GH_TOKEN is set
-if [ -z "${GH_TOKEN}" ]; then
-    echo "Error: GH_TOKEN environment variable is not set. GitHub authentication is required."
-    exit 1
+# Check if GH_TOKEN is set and authenticate with GitHub if available
+if [ -n "${GH_TOKEN}" ]; then
+    echo "GH_TOKEN found, authenticating with GitHub..."
+    echo "${GH_TOKEN}" | gh auth login --with-token
+    if [ $? -ne 0 ]; then
+        echo "Warning: Failed to authenticate with GitHub. Continuing without authentication."
+    else
+        echo "Successfully authenticated with GitHub"
+    fi
+else
+    echo "GH_TOKEN not set, skipping GitHub authentication"
 fi
-
-# Authenticate with GitHub using GH_TOKEN
-echo "${GH_TOKEN}" | gh auth login --with-token
-if [ $? -ne 0 ]; then
-    echo "Error: Failed to authenticate with GitHub. Please check your token."
-    exit 1
-fi
-echo "Successfully authenticated with GitHub"
 
 # Check if REPO_URL environment variable is set
 if [ -z "${REPO_URL}" ]; then
