@@ -1,3 +1,7 @@
+torch==2.5.1+cu126
+torchaudio==2.5.1+cu126
+torchvision==0.20.1+cu126
+
 ultralytics
 insightface
 onnx
@@ -7,5 +11,3 @@ accelerate
 transformers
 qwen-vl-utils[decord]
 autoawq
-
-torch==2.5.1+cu126
