@@ -14,6 +14,7 @@ apt update -y && apt upgrade -y && apt install -y --no-install-recommends  \
     wget \
     fonts-liberation \
     run-one \
+    gh \
 && rm -rf /var/lib/apt/lists/*
 EOF
 
@@ -21,14 +22,19 @@ RUN pip install jupyterlab
 
 RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
-# Set the working directory in the container
 WORKDIR /workdir
 
+# Set the working directory in the container
 # Copy the requirements file
-COPY requirements.txt .
+COPY requirements.txt /requirements.txt
 
 # Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
 
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+# Copy startup script and make it executable
+COPY startup.sh /startup.sh
+RUN chmod +x /startup.sh
+
+# Use startup script as entrypoint
+CMD ["/startup.sh"]
 
