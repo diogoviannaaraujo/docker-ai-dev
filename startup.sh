@@ -21,7 +21,7 @@ if [ -z "${REPO_URL}" ]; then
 else
     echo "Cloning repository from ${REPO_URL}"
     # Clone the repository
-    git clone ${REPO_URL}
+    git clone ${REPO_URL} .
     echo "Repository cloned successfully"
 fi
 

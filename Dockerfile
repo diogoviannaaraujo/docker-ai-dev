@@ -42,4 +42,3 @@ WORKDIR /workdir
 
 # Use startup script as entrypoint
 CMD ["/startup.sh"]
-
