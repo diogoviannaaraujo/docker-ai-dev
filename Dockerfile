@@ -15,6 +15,10 @@ apt update -y && apt upgrade -y && apt install -y --no-install-recommends  \
     fonts-liberation \
     run-one \
     gh \
+    libgl1-mesa-glx \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
 && rm -rf /var/lib/apt/lists/*
 EOF
 
@@ -39,6 +43,8 @@ COPY startup.sh /startup.sh
 RUN chmod +x /startup.sh
 
 WORKDIR /workdir
+
+ENV SHELL=/bin/bash
 
 # Use startup script as entrypoint
 CMD ["/startup.sh"]
