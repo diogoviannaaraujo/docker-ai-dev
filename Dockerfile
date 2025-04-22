@@ -31,6 +31,7 @@ RUN pip install --no-cache-dir \
     ultralytics \
     insightface \
     onnx \
+    onnxslim \
     onnxruntime-gpu \
     "huggingface_hub[cli]" \
     accelerate \
