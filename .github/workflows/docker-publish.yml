@@ -45,3 +45,5 @@ jobs:
           context: .
           push: true
           tags: vogoid/ai-dev:latest
+          cache-from: type=registry,ref=vogoid/ai-dev:latest
+          cache-to: type=inline,mode=min
