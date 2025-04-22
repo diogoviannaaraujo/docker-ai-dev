@@ -11,6 +11,7 @@ apt update -y && apt upgrade -y && apt install -y --no-install-recommends  \
     python3 \
     python3-pip \
     python3-dev \
+    nano \
     wget \
     fonts-liberation \
     run-one \
